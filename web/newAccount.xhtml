@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" >
+<f:view>
+    <h:form>
+        <h:outputLabel for="title"><fmt:message key="overv.title"/></h:outputLabel>
+        <h:inputText id="title"></h:inputText>
+        <h:outputLabel for="website"><fmt:message key="acc.webs"/></h:outputLabel>
+        <h:inputText id="website"></h:inputText>
+        <h:outputLabel for="username"><fmt:message key="wel.lbl.usern"/></h:outputLabel>
+        <h:inputText id="username"></h:inputText>
+        <h:outputLabel for="password"><fmt:message key="wel.lbl.pw"/></h:outputLabel>
+        <h:inputText id="password"></h:inputText>
+        <h:button id="btnPasswordGen"><fmt:message key="acc.genPw"/></h:button>
+        <h:commandButton><fmt:message key="acc.create"/></h:commandButton>
+    </h:form>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<script type="application/javascript">
+    $("#btnPasswordGen").click(function(){
+        var pw = randomPW();
+        $("#password").val(pw);
+    });
+
+    function randomPW(){
+        console.log("Generate PW");
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 10; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+</script>
+</html>
