@@ -1,11 +1,17 @@
 package bean;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  * Created by Daniel Hirt ond Michel Tüscher
  *
  * User bean. Contains Username and Password
  */
-
+@ManagedBean(name = "user")
 public class User {
     private String uname, pw, email, lname, fname;
     private int id;
@@ -95,6 +101,49 @@ public class User {
      * @param fname firstname
      */
     public void setFname(String fname){ this.fname = fname; }
+
+    public String register() {
+        int status = 0;
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users (username, password, fname, lname, email) " +
+                    "VALUE ('"+uname+"','"+pw+"','"+fname+"','"+lname+"','"+email+"') ");
+
+            status = ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.err.println("Got an exception");
+            System.err.println(e.getMessage());
+        }
+
+        if (status>0) return "success";
+        else return "unsuccess";
+    }
+
+    public String validate(){
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password= ?");
+
+            ps.setString(1, uname);
+            ps.setString(2, pw);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                int id = rs.getInt("user_id");
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userID", id);
+                return "success";
+            }
+        } catch (Exception e){
+            System.err.println("Got an exception");
+            System.err.println(e.getMessage());
+        }
+
+        return "error";
+    }
 
 
 }
