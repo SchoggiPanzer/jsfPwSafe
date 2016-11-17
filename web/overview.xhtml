@@ -5,40 +5,42 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:dataTable value="#{accountBean.getAccountsById(1)}">
-        <h:column>
-            <f:facet name="header">
-                #{msg['overv.title']}
-            </f:facet>
-            #{account.title}
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                URL
-            </f:facet>
-            #{account.website}
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                #{msg['wel.lbl.usern']}
-            </f:facet>
-            #{account.username}
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                #{msg['wel.lbl.pw']}
-            </f:facet>
-            #{account.password}
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                #{msg['overv.option']}
-            </f:facet>
-            <h:commandButton id="btnChange" value="#{msg['overv.newAcc']}"/>
-        </h:column>
-    </h:dataTable>
-    <h:commandButton id="btnNewAccount" value="new"/>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+<h:body>
+    <f:view>
+        <h:dataTable value="#{accountBean.getAccountsById(1)}">
+            <h:column>
+                <f:facet name="header">
+                    #{msg['overv.title']}
+                </f:facet>
+                #{account.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    URL
+                </f:facet>
+                #{account.website}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    #{msg['wel.lbl.usern']}
+                </f:facet>
+                #{account.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    #{msg['wel.lbl.pw']}
+                </f:facet>
+                #{account.password}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    #{msg['overv.option']}
+                </f:facet>
+                <h:commandButton id="btnChange" value="#{msg['overv.newAcc']}"/>
+            </h:column>
+        </h:dataTable>
+        <h:commandButton id="btnNewAccount" value="new" action="/accountNew.xhtml"/>
+    </f:view>
+</h:body>
+
 </html>
