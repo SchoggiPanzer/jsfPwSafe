@@ -110,7 +110,7 @@ public class Account {
             System.out.println("Hey");
 
             Connection con = ConnectionProvider.getCon();
-
+            System.out.println("Got connection");
             PreparedStatement ps = con.prepareStatement("INSERT INTO accounts (title, website, username, password, user_id) VALUES (?, ?, ?, ?, ?)");
 
             ps.setString(1, this.title);

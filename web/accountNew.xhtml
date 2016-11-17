@@ -9,13 +9,17 @@
     <h:form>
         <h:outputLabel for="title" value="#{msg['overv.title']}" />
         <h:inputText id="title" value="#{account.title}"/>
+        <br/>
         <h:outputLabel for="website" value="#{msg['acc.webs']}" />
         <h:inputText id="website" value="#{account.website}"/>
+        <br/>
         <h:outputLabel for="username" value="#{msg['wel.lbl.usern']}" />
         <h:inputText id="username" value="#{account.username}"/>
+        <br/>
         <h:outputLabel for="password" value="#{msg['wel.lbl.pw']}" />
         <h:inputText id="password" value="#{account.password}"/>
-        <h:button id="btnPasswordGen" value="#{msg['acc.genPw']}"/>
+        <h:commandButton id="btnPasswordGen" value="#{msg['acc.genPw']}"/>
+        <br/>
         <h:commandButton value="#{msg['acc.create']}" action="#{account.createAccount}"/>
     </h:form>
 </f:view>
