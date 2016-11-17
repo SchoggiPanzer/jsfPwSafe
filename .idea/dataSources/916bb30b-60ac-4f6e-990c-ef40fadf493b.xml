@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - passwordStorage@127.0.0.1">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="passwordStorage">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <table id="3" parent="1" name="accounts"/>
+    <table id="4" parent="1" name="users"/>
+    <column id="5" parent="3" name="account_id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="6" parent="3" name="title">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="7" parent="3" name="website">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="8" parent="3" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="9" parent="3" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="10" parent="3" name="user_id">
+      <data-type>int(10)|0</data-type>
+    </column>
+    <index id="11" parent="3" name="user_id">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="12" parent="3" name="PRIMARY">
+      <columns>account_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="13" parent="3" name="accounts_ibfk_1">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="14" parent="4" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="15" parent="4" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="16" parent="4" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="17" parent="4" name="fname">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="18" parent="4" name="lname">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="19" parent="4" name="email">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <key id="20" parent="4" name="PRIMARY">
+      <columns>user_id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
