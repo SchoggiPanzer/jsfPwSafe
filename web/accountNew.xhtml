@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:form>
+        <h:outputLabel for="title" value="#{msg['overv.title']}" />
+        <h:inputText id="title" value="#{account.title}"/>
+        <h:outputLabel for="website" value="#{msg['acc.webs']}" />
+        <h:inputText id="website" value="#{account.website}"/>
+        <h:outputLabel for="username" value="#{msg['wel.lbl.usern']}" />
+        <h:inputText id="username" value="#{account.username}"/>
+        <h:outputLabel for="password" value="#{msg['wel.lbl.pw']}" />
+        <h:inputText id="password" value="#{account.password}"/>
+        <h:button id="btnPasswordGen" value="#{msg['acc.genPw']}"/>
+        <h:commandButton value="#{msg['acc.create']}" action="#{account.createAccount}"/>
+    </h:form>
+</f:view>
+<script type="application/javascript">
+    $("#btnPasswordGen").click(function(){
+        var pw = randomPW();
+        $("#password").val(pw);
+    });
+
+    function randomPW(){
+        console.log("Generate PW");
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i!=10; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+</script>
+</html>
