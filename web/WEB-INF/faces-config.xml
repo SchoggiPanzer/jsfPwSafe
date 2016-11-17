@@ -8,7 +8,7 @@
             <default-locale>de</default-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>text</base-name>
+            <base-name>main.resources.text</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>
