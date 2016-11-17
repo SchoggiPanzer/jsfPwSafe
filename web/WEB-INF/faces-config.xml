@@ -4,11 +4,40 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <application>
+        <message-bundle>resources.application</message-bundle>
+        <locale-config>
+            <default-locale>en</default-locale>
+        </locale-config>
+    </application>
     <navigation-rule>
-        <from-view-id>../index.xhtml</from-view-id>
+        <description>login user</description>
+        <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>overview</from-outcome>
-            <to-view-id>../overview.xhtml</to-view-id>
+            <from-action>#{user.login}</from-action>
+            <from-outcome>output</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-action>#{user.login}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <description>register new user</description>
+        <from-view-id>/register.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{user.add}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{user.add}</from-action>
+            <from-outcome>unsuccess</from-outcome>
+            <to-view-id>/unsuccess.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
   

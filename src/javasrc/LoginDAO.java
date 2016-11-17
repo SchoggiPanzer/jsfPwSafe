@@ -11,12 +11,10 @@ import java.sql.SQLException;
 public class LoginDAO {
 
     public static boolean validate(String user, String password){
-        Connection con = null;
-        PreparedStatement ps = null;
-
         try {
-            con = DbConnection.getConnection();
-            ps = con.prepareStatement("Select username, password from users where username = ? and password = ?");
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password= ?");
             ps.setString(1, user);
             ps.setString(2, password);
 
@@ -29,8 +27,9 @@ public class LoginDAO {
         } catch (SQLException ex) {
             System.out.println("Login error -->" + ex.getMessage());
             return false;
-        } finally {
-            DbConnection.close(con);
+        } catch (Exception ex) {
+            System.out.println("Login error -->" + ex.getMessage());
+            return false;
         }
         return false;
     }
