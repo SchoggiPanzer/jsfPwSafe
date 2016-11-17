@@ -1,6 +1,7 @@
 package bean;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -112,6 +113,10 @@ public class Account {
             Connection con = ConnectionProvider.getCon();
             System.out.println("Got connection");
             PreparedStatement ps = con.prepareStatement("INSERT INTO accounts (title, website, username, password, user_id) VALUES (?, ?, ?, ?, ?)");
+
+            int id = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+
+            System.out.println(this);
 
             ps.setString(1, this.title);
             ps.setString(2, this.website);
