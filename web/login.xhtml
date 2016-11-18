@@ -6,34 +6,37 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
-    <f:view>
-        <h:form id="loginForm">
-            <table frame="box">
-                <tr>
-                    <th>Login Page</th>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Enter Your Username : " /></td>
-                    <td><h:inputText id="inputName" value="#{user.uname}"
-                                     required="true" requiredMessage="Name field must not be empty" />
-                    </td>
-                    <td><h:message for="inputName" style="color:red" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Enter password :" /></td>
-                    <td><h:inputSecret id="inputPassword" value="#{user.pw}"
-                                       required="true"
-                                       requiredMessage="Password field must not be empty" /></td>
-                    <td><h:message for="inputPassword" style="color:red" /></td>
-                </tr>
-                <tr>
-                    <td><h:commandButton value="Sign In" action="#{user.validate}" /></td>
-                    <td><h:outputText value="Not a User " />
-                        <h:outputLink value="register.xhtml">Sign Up</h:outputLink>
-                    </td>
-                </tr>
-            </table>
-        </h:form>
-    </f:view>
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <h:form id="loginForm">
+                <table frame="box">
+                    <tr>
+                        <th>#{msg['login']}</th>
+                    </tr>
+                    <tr>
+                        <td><h:outputText value="#{msg} : " /></td>
+                        <td><h:inputText id="inputName" value="#{user.uname}"
+                                         required="true" requiredMessage="Name field must not be empty" />
+                        </td>
+                        <td><h:message for="inputName" style="color:red" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputText value="Enter password :" /></td>
+                        <td><h:inputSecret id="inputPassword" value="#{user.pw}"
+                                           required="true"
+                                           requiredMessage="Password field must not be empty" /></td>
+                        <td><h:message for="inputPassword" style="color:red" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton value="Sign In" action="#{user.validate}" /></td>
+                        <td><h:outputText value="Not a User " />
+                            <h:outputLink value="register.xhtml">Sign Up</h:outputLink>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
 </h:body>
 </html>

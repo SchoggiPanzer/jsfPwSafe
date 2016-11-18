@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>#{msg['apptitle']}</title>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+</h:head>
+<h:body>
+
+    <div class="container fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>#{msg['apptitle']}</h2>
+            </div>
+            <div class="col-md-4">
+                <f:view locale="#{lang.locale}">
+                    <h:form>
+                        <h:commandButton action="#{lang.changeLanguage('')}" value="English" image="resources/images/uk_small.png"/>
+                        <h:commandButton action="#{lang.changeLanguage('de')}" value="German" image="resources/images/ch_small.png"/>
+                        <h:commandButton action="#{lang.changeLanguage('fr')}" value="French" image="resources/images/fr_small.png"/>
+                    </h:form>
+                </f:view>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <ui:insert name="content">
+                Default Content
+            </ui:insert>
+        </div>
+    </div>
+
+</h:body>
+
+</html>

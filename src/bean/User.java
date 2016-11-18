@@ -135,6 +135,7 @@ public class User {
             if(rs.next()){
                 int id = rs.getInt("user_id");
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userID", id);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("uname", uname);
                 return "success";
             }
         } catch (Exception e){
@@ -144,6 +145,4 @@ public class User {
 
         return "error";
     }
-
-
 }
