@@ -1,7 +1,11 @@
 package bean;
 
 import javax.faces.bean.ManagedBean;
+<<<<<<< HEAD
 import javax.faces.context.FacesContext;
+=======
+import javax.faces.bean.RequestScoped;
+>>>>>>> 00bbffa879822373a363202c7de69c010aa27e18
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -125,16 +129,25 @@ public class User {
         try {
             Connection con = ConnectionProvider.getCon();
 
+<<<<<<< HEAD
             PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password= ?");
+=======
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password= ?");
+>>>>>>> 00bbffa879822373a363202c7de69c010aa27e18
 
             ps.setString(1, uname);
             ps.setString(2, pw);
 
             ResultSet rs = ps.executeQuery();
+<<<<<<< HEAD
 
             if(rs.next()){
                 int id = rs.getInt("user_id");
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userID", id);
+=======
+            if(rs.next()){
+
+>>>>>>> 00bbffa879822373a363202c7de69c010aa27e18
                 return "success";
             }
         } catch (Exception e){
